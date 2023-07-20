@@ -1,0 +1,12 @@
+{
+  "include": ["src"],
+  "exclude": ["build"],
+  "compilerOptions": {
+    "moduleResolution": "Node",
+    "outDir": "build",
+    "rootDir": "src",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "strict": true
+  }
+}
