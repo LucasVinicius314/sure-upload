@@ -17,7 +17,7 @@ class App extends StatelessWidget {
       ),
       routes: {
         HomePage.route: (context) => const HomePage(),
-        LoginPage.route: (context) => const LoginPage(),
+        LoginPage.route: (context) => LoginPage(),
       },
     );
   }

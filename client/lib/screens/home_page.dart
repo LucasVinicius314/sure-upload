@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sure_upload/blocs/user_bloc.dart';
 import 'package:sure_upload/screens/login_page.dart';
-import 'package:sure_upload/utils/constants.dart';
+import 'package:sure_upload/utils/utils.dart';
+import 'package:sure_upload/widgets/base_page_layout.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,18 +20,14 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     Future(() async {
-      await Navigator.of(context)
-          .pushNamedAndRemoveUntil(LoginPage.route, (route) => false);
+      if (context.read<UserBloc>().state is! LoginDoneState) {
+        await Utils.replaceAllRoutes(context, LoginPage.route);
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text(Constants.appName),
-      ),
-    );
+    return BasePageLayout(child: Container());
   }
 }
