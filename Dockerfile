@@ -20,6 +20,8 @@ FROM ubuntu:20.04 AS client-builder
 
 ARG DEBIAN_FRONTEND=noninteractive
 
+ARG API_AUTHORITY
+
 RUN apt-get update && apt-get install -y curl git wget unzip fonts-droid-fallback python3
 RUN apt-get clean
 
@@ -44,7 +46,7 @@ COPY ./client .
 
 RUN flutter pub get
 
-RUN flutter build web --release
+RUN flutter build web --release --dart-define API_AUTHORITY=${API_AUTHORITY}
 
 #
 # Runner
