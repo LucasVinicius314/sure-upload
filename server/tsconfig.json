@@ -2,7 +2,7 @@
   "include": ["src"],
   "exclude": ["build"],
   "compilerOptions": {
-    "lib": ["ES2023"],
+    "lib": ["ES2021"],
     "moduleResolution": "Node",
     "outDir": "build",
     "rootDir": "src",
