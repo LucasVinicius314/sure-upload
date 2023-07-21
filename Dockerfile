@@ -58,6 +58,7 @@ WORKDIR /app
 COPY ./server/package.json ./server/yarn.lock ./server/tsconfig.json ./
 
 COPY --from=builder /app/build /app/build
+COPY --from=builder /app/assets /app/assets
 COPY --from=client-builder /app/build/web /app/public
 
 RUN yarn install --production --frozen-lockfile
