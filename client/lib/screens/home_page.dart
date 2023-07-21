@@ -68,12 +68,32 @@ class _HomePageState extends State<HomePage> {
                         ),
                         const SizedBox(height: 8),
                         Expanded(
-                          child: _getFileList(
-                            listFilesDoneState: fileState,
-                            loginDoneState: userState,
-                          ),
+                          child: fileState.files.isEmpty
+                              ? Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 16,
+                                    right: 16,
+                                    bottom: 16,
+                                  ),
+                                  child: Text(
+                                    'No files found. Try uploading some!',
+                                    style:
+                                        Theme.of(context).textTheme.bodySmall,
+                                  ),
+                                )
+                              : _getFileList(
+                                  listFilesDoneState: fileState,
+                                  loginDoneState: userState,
+                                ),
                         ),
-                      ] else
+                      ] else if (fileState is ListFilesErrorState)
+                        const Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Text('Something went wrong.'),
+                          ),
+                        )
+                      else
                         const Expanded(child: LoadingIndicator()),
                     ],
                   );

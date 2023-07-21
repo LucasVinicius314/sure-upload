@@ -54,6 +54,14 @@ fileRouter.get('/', async (req, res, next) => {
 
     const dir = `content/${bucket}`
 
+    if (!fs.existsSync(dir)) {
+      res.status(200).json({
+        files: [],
+      })
+
+      return
+    }
+
     const files = fs.readdirSync(dir)
 
     res.status(200).json({
