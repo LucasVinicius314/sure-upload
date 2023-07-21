@@ -12,6 +12,7 @@ declare global {
       DATABASE_URL: string
       JWT_SECRET: string
       PORT: string
+      API_AUTHORITY: string
     }
   }
 }

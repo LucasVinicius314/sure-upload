@@ -39,10 +39,21 @@ contentRouter.get('/:bucket/:fileName', async (req, res, next) => {
 
       return
     } else if (mode === 'embed') {
-      res.status(500).json({
+      let embedBase = fs.readFileSync('assets/embed-base.html', 'utf8')
+
+      const keys: { [type: string]: string } = {
+        TITLE: fileName,
+        URL: `https://${process.env.API_AUTHORITY}/content/${filePath}?mode=download`,
         // TODO: fix
-        message: 'Missing implementation.',
-      })
+        TYPE: 'video.other',
+        MIME: 'video/mp4',
+      }
+
+      for (const key in keys) {
+        embedBase = embedBase.replaceAll(`\${${key}}$`, keys[key])
+      }
+
+      res.status(200).send(embedBase)
     } else {
       res.status(400).json({
         message:
