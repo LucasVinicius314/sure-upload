@@ -3,12 +3,16 @@ import 'package:http_interceptor/http_interceptor.dart';
 import 'package:sure_upload/repositories/local_repository.dart';
 
 class AuthInterceptor implements InterceptorContract {
-  final _localRepository = LocalRepository();
+  AuthInterceptor({
+    required this.localRepository,
+  });
+
+  final LocalRepository localRepository;
 
   @override
   Future<RequestData> interceptRequest({required RequestData data}) async {
     try {
-      final token = await _localRepository.getToken();
+      final token = await localRepository.getToken();
 
       if (token != null) {
         final authorization = token;
@@ -20,15 +24,13 @@ class AuthInterceptor implements InterceptorContract {
         );
       }
 
-      if (data.body is String && (data.body as String).startsWith('{')) {
-        const contentType = 'application/json; charset=UTF-8';
+      const contentType = 'application/json; charset=UTF-8';
 
-        data.headers.update(
-          'Content-Type',
-          (value) => contentType,
-          ifAbsent: () => contentType,
-        );
-      }
+      data.headers.update(
+        'Content-Type',
+        (value) => contentType,
+        ifAbsent: () => contentType,
+      );
     } catch (e) {
       if (kDebugMode) {
         print(e);

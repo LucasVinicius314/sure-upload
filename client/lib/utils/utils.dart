@@ -1,14 +1,21 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
 class Utils {
-  static void showSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
+  static Future<void> copyToClipboard(String text) async {
+    await Clipboard.setData(ClipboardData(text: text));
+  }
+
+  static Future<void> launchUrl(String url) async {
+    await url_launcher.launchUrl(Uri.parse(url), webOnlyWindowName: '_blank');
   }
 
   static Future<void> replaceAllRoutes(
-      BuildContext context, String route) async {
+    BuildContext context,
+    String route,
+  ) async {
     if (kDebugMode) {
       print('replacing all routes with [$route]');
     }
@@ -23,5 +30,10 @@ class Utils {
     }
 
     await Navigator.of(context).pushReplacementNamed(route);
+  }
+
+  static void showSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 }
