@@ -146,12 +146,17 @@ class _HomePageState extends State<HomePage> {
           itemBuilder: (context, index) {
             final file = files[index];
 
-            final baseUrl = 'https://${Env.apiAuthority}/content/$bucket/$file';
+            final baseUrl = Uri.encodeFull(
+              'https://${Env.apiAuthority}/content/$bucket/$file',
+            );
 
             final downloadUrl = '$baseUrl?mode=download';
 
             return ListTile(
-              title: Text(file),
+              title: Text(
+                file,
+                style: const TextStyle(fontFamily: 'RobotoMono'),
+              ),
               contentPadding: const EdgeInsets.symmetric(horizontal: 16),
               tileColor: index % 2 == 0 ? Colors.grey.shade100 : null,
               trailing: Row(

@@ -78,3 +78,41 @@ flutter:
         - asset: assets/fonts/Poppins/Poppins-ExtraBoldItalic.ttf
           style: italic
           weight: 800
+
+    - family: RobotoMono
+      fonts:
+        - asset: assets/fonts/RobotoMono/RobotoMono-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/RobotoMono/RobotoMono-ThinItalic.ttf
+          style: italic
+          weight: 100
+        - asset: assets/fonts/RobotoMono/RobotoMono-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/RobotoMono/RobotoMono-ExtraLightItalic.ttf
+          style: italic
+          weight: 200
+        - asset: assets/fonts/RobotoMono/RobotoMono-Light.ttf
+          weight: 300
+        - asset: assets/fonts/RobotoMono/RobotoMono-LightItalic.ttf
+          style: italic
+          weight: 300
+        - asset: assets/fonts/RobotoMono/RobotoMono-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/RobotoMono/RobotoMono-Italic.ttf
+          style: italic
+          weight: 400
+        - asset: assets/fonts/RobotoMono/RobotoMono-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/RobotoMono/RobotoMono-MediumItalic.ttf
+          style: italic
+          weight: 500
+        - asset: assets/fonts/RobotoMono/RobotoMono-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/RobotoMono/RobotoMono-SemiBoldItalic.ttf
+          style: italic
+          weight: 600
+        - asset: assets/fonts/RobotoMono/RobotoMono-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/RobotoMono/RobotoMono-BoldItalic.ttf
+          style: italic
+          weight: 700
