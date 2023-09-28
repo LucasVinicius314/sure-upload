@@ -1,6 +1,6 @@
 # sure-upload
 
- 
+Static file hosting and serving web app and service. Simple, bucket-oriented.
 
 ```bash
 docker build -t sure-upload .
